@@ -1,239 +1,229 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
-/* easing corect tipizat */
 const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-/* animație secțiuni */
 const section: Variants = {
   hidden: { opacity: 0, y: 14 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: EASE_OUT },
-  },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE_OUT } },
 };
 
 export default function DespreNoiPage() {
   return (
-    <div className="relative">
-      {/* fundal colorat (ca Blog/Contact) */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-24 left-[-120px] h-[420px] w-[420px] rounded-full bg-fuchsia-500/10 blur-3xl" />
-        <div className="absolute -top-32 right-[-120px] h-[460px] w-[460px] rounded-full bg-sky-500/10 blur-3xl" />
-        <div className="absolute -bottom-32 left-[10%] h-[520px] w-[520px] rounded-full bg-emerald-500/10 blur-3xl" />
-      </div>
+    <div className="relative bg-white">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-white" />
+
+      {/* ===== Banner (mock-up landscape sub meniu) ===== */}
+      <motion.section
+        variants={section}
+        initial="hidden"
+        animate="show"
+        className="relative h-[180px] overflow-hidden border-b border-black/10 md:h-[220px]"
+      >
+        {/* Dacă ai o poză dedicată, schimbă src în /despre-noi-banner.jpg */}
+        <Image
+          src="/despre-noi-proiect.jpeg"
+          alt="Caprice Tech - Despre noi"
+          fill
+          priority
+          className="object-cover"
+          style={{ objectPosition: "center 50%" }}
+        />
+        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+
+        <div className="mx-auto flex h-full max-w-7xl items-end px-4 pb-8">
+          <div className="max-w-2xl">
+            <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur">
+              ABOUT US
+            </p>
+            <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+              Despre noi
+            </h1>
+          </div>
+        </div>
+      </motion.section>
 
       <div className="mx-auto max-w-7xl px-4 py-12">
-        {/* HERO */}
-        <motion.section
-          variants={section}
-          initial="hidden"
-          animate="show"
-          className="rounded-3xl border border-black/10 bg-white/70 p-8 backdrop-blur md:p-12"
-        >
-          <p className="inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-neutral-700">
-            Despre noi
-          </p>
-
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">
-            Caprice Tech — materiale pentru instalații și finisaje, într-un singur
-            loc.
-          </h1>
-
-          <p className="mt-4 max-w-3xl text-base leading-7 text-neutral-700">
-            [DE COMPLETAT: 3–6 rânduri despre firmă: ce vindeți, cui vă adresați,
-            zona deservită și ce vă diferențiază (stoc, prețuri, consultanță).]
-          </p>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <InfoCard title="Gama de produse">
-              [DE COMPLETAT: categorii, branduri, disponibilitate pe stoc]
-            </InfoCard>
-            <InfoCard title="Consultanță">
-              [DE COMPLETAT: recomandări corecte, compatibilitate produse, soluții
-              complete]
-            </InfoCard>
-            <InfoCard title="Livrare / Ridicare">
-              [DE COMPLETAT: livrare locală/națională, ridicare din depozit,
-              termene]
-            </InfoCard>
-          </div>
-        </motion.section>
-
-        {/* CATEGORII */}
+        {/* ===== Section: Image + Card (ca în poză) ===== */}
         <motion.section
           variants={section}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-14"
+          viewport={{ once: true, amount: 0.25 }}
+          className="grid gap-6 lg:grid-cols-12"
         >
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">
-            Ce comercializăm
-          </h2>
-          <p className="mt-2 max-w-3xl text-neutral-700">
-            Materiale selectate pentru proiecte rezidențiale și comerciale — de la
-            instalații electrice și termice, până la finisaje și pardoseli.
-          </p>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <CategoryCard
-              title="Instalații electrice"
-              items={[
-                "cabluri, conductori, tuburi",
-                "prize, întrerupătoare, aparataj",
-                "tablouri, siguranțe, protecții",
-                "[DE COMPLETAT: alte produse electrice]",
-              ]}
-            />
-            <CategoryCard
-              title="Instalații termice"
-              items={[
-                "țevi și fitinguri",
-                "radiatoare și accesorii",
-                "izolații și elemente de montaj",
-                "[DE COMPLETAT: alte produse termice]",
-              ]}
-            />
-            <CategoryCard
-              title="Finisaje interioare"
-              items={[
-                "vopsele lavabile, amorse, glet",
-                "tencuieli decorative și sisteme de finisaj",
-                "accesorii (role, pensule, benzi)",
-                "[DE COMPLETAT: alte finisaje]",
-              ]}
-            />
-          </div>
-
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <CategoryCard
-              title="Gresie & faianță"
-              items={[
-                "plăci ceramice pentru baie și bucătărie",
-                "adezivi, chituri, profile",
-                "[DE COMPLETAT: branduri / colecții]",
-              ]}
-            />
-            <CategoryCard
-              title="Pardoseli"
-              items={[
-                "parchet / pardoseală (după caz)",
-                "strat suport, plintă, accesorii",
-                "[DE COMPLETAT: tipuri pardoseli]",
-              ]}
-            />
-          </div>
-        </motion.section>
-
-        {/* DE CE NOI */}
-        <motion.section
-          variants={section}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-14"
-        >
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">
-            De ce Caprice Tech
-          </h2>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            <ValueCard
-              title="Soluții complete"
-              desc="[DE COMPLETAT: pachete complete de materiale pentru fiecare categorie]"
-            />
-            <ValueCard
-              title="Recomandări corecte"
-              desc="[DE COMPLETAT: consultanță tehnică și alternative corecte]"
-            />
-            <ValueCard
-              title="Disponibilitate"
-              desc="[DE COMPLETAT: stoc, comenzi speciale, termene rapide]"
-            />
-          </div>
-        </motion.section>
-
-        {/* BRANDURI */}
-        <motion.section
-          variants={section}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-14 rounded-3xl border border-black/10 bg-white/70 p-8 backdrop-blur md:p-10"
-        >
-          <div className="grid gap-8 md:grid-cols-2">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">
-                Branduri și parteneri
-              </h2>
-              <p className="mt-2 text-neutral-700">
-                Distribuitor și partener pentru vopsele și sisteme de finisaj,
-                inclusiv Caparol.
-              </p>
-
-              <ul className="mt-4 space-y-2 text-neutral-700">
-                <li>• Caparol — vopsele și sisteme de finisaj</li>
-                <li>• [DE COMPLETAT: brand 2]</li>
-                <li>• [DE COMPLETAT: brand 3]</li>
-              </ul>
+          {/* imagine */}
+          <div className="lg:col-span-7">
+            <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-neutral-100">
+              <div className="relative h-[340px] md:h-[420px]">
+                <Image
+                  src="/despre-noi-proiect.jpeg"
+                  alt="Proiect - Caprice Tech"
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: "center 45%" }}
+                />
+              </div>
             </div>
+          </div>
 
-            <div className="rounded-2xl border border-black/10 bg-white/80 p-6 backdrop-blur">
-              <p className="text-sm font-semibold text-neutral-900">
-                Detalii magazin / livrare
-              </p>
-              <p className="mt-2 text-sm text-neutral-700">
-                [DE COMPLETAT: oraș, program, livrare, comandă]
+          {/* card info */}
+          <div className="lg:col-span-5">
+            <motion.div
+              whileHover={{ y: -2 }}
+              transition={{ type: "spring", stiffness: 420, damping: 28 }}
+              className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm"
+            >
+              <p className="text-xs font-medium text-neutral-500">
+                CAPRICE TECH
               </p>
 
-              <div className="mt-6 border-t border-black/10 pt-6">
-                <p className="text-sm font-semibold text-neutral-900">
-                  Clienți deserviți
-                </p>
-                <p className="mt-2 text-sm text-neutral-700">
-                  [DE COMPLETAT: persoane fizice, firme, dezvoltatori]
-                </p>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-neutral-900">
+                Experiență care susține proiecte reale.
+              </h2>
+
+              <p className="mt-4 text-sm leading-7 text-neutral-700">
+                De peste 30 de ani lucrăm cu materiale pentru instalații,
+                încălzire, climatizare și amenajări interioare. Experiența
+                acumulată în timp ne permite să înțelegem nevoile reale ale
+                fiecărui proiect și să recomandăm soluții care funcționează pe
+                termen lung.
+              </p>
+
+              {/* mini-stats (2 chenare) */}
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                <MiniStat value="30+" label="ani de experiență" />
+                <MiniStat value="1000+" label="proiecte de succes" />
+              </div>
+
+
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* ===== Why Choose Us ===== */}
+        <motion.section
+          variants={section}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-14"
+        >
+          <div className="max-w-2xl">
+            <p className="text-xs font-medium text-neutral-500">WHY CHOOSE US</p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-neutral-900">
+              De ce Caprice-tech?
+            </h2>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <WhyCard
+              title="Experiență reală"
+              desc="Peste 30 de ani de experiență în materiale pentru instalații, încălzire, climatizare și amenajări interioare."
+            />
+            <WhyCard
+              title="Gama completă de produse"
+              desc="Soluții complete pentru fiecare etapă a proiectului, de la instalații și climatizare la finisaje și pardoseli."
+            />
+            <WhyCard
+              title="Consiliere profesională"
+              desc="Nu vindem la întâmplare. Analizăm nevoia și recomandăm soluțiile potrivite pentru fiecare proiect."
+            />
+            <WhyCard
+              title="Suport pentru execuție"
+              desc="Acces la meseriași verificați pentru punerea corectă în operă a fiecărui proiect."
+            />
+
+            {/* Cadran special evidențiat (dreptunghiular) */}
+            <SpecialCard
+              title="Echipă tehnică specializată"
+              desc="Echipă de 2 ingineri special pregătiți, cu atestate în domeniul instalațiilor, pentru realizarea proiectelor de instalații."
+              note=""
+            />
+          </div>
+        </motion.section>
+
+        {/* ===== Section extra (ca în poză: încă un bloc cu imagine + text) ===== */}
+        <motion.section
+          variants={section}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-14 grid gap-6 lg:grid-cols-12"
+        >
+          <div className="lg:col-span-5">
+            <p className="text-xs font-medium text-neutral-500">
+              MATERIALE & SOLUȚII
+            </p>
+            <h3 className="mt-2 text-2xl font-semibold tracking-tight text-neutral-900">
+              Soluții potrivite pentru fiecare etapă a proiectului.
+            </h3>
+            <p className="mt-4 text-sm leading-7 text-neutral-700">
+              De la materiale pentru instalații electrice și termice, până la
+              finisaje, gresie, faianță și pardoseli — te ajutăm să alegi corect
+              și compatibil.
+            </p>
+
+            <ul className="mt-6 space-y-2 text-sm text-neutral-700">
+              <li>• recomandări în funcție de buget și cerințe</li>
+              <li>• produse verificate + compatibilitate</li>
+              <li>• livrare / ridicare din depozit</li>
+            </ul>
+
+            <div className="mt-7">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-neutral-50"
+              >
+                Cere recomandare
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-neutral-100">
+              <div className="relative h-[320px] md:h-[420px]">
+                <Image
+                  src="/despre-noi-proiect.jpeg"
+                  alt="Materiale și finisaje - Caprice Tech"
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: "center 55%" }}
+                />
               </div>
             </div>
           </div>
         </motion.section>
 
-        {/* CTA */}
+        {/* ===== CTA jos (ca în poză) ===== */}
         <motion.section
           variants={section}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-14"
+          className="mt-14 pb-8"
         >
-          <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-neutral-900 p-10 text-white">
-            {/* glow ca la Blog/Contact */}
-            <div className="pointer-events-none absolute inset-0">
-              <div className="absolute -top-20 right-[-140px] h-[360px] w-[360px] rounded-full bg-fuchsia-500/20 blur-3xl" />
-              <div className="absolute -bottom-24 left-[-140px] h-[360px] w-[360px] rounded-full bg-sky-500/20 blur-3xl" />
-            </div>
+          <div className="rounded-3xl border border-black/10 bg-neutral-900 p-10 text-white">
+            <h4 className="text-2xl font-semibold tracking-tight">
+              Ești gata să începem un proiect nou?
+            </h4>
+            <p className="mt-2 max-w-2xl text-white/80">
+              Trimite-ne lista sau câteva detalii și revenim cu recomandări și o
+              ofertă adaptată.
+            </p>
 
-            <div className="relative">
-              <h2 className="text-2xl font-semibold tracking-tight">
-                Ai nevoie de recomandări pentru materiale?
-              </h2>
-              <p className="mt-2 max-w-2xl text-white/80">
-                Trimite-ne detaliile proiectului, iar noi te ajutăm cu produsele
-                potrivite.
-              </p>
-
-              <div className="mt-6">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-white/90"
-                >
-                  Contact
-                </a>
-              </div>
+            <div className="mt-6">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-white/90"
+              >
+                Contact
+              </Link>
             </div>
           </div>
         </motion.section>
@@ -242,47 +232,57 @@ export default function DespreNoiPage() {
   );
 }
 
-/* ================= COMPONENTE ================= */
+/* ================== COMPONENTE ================== */
 
-function InfoCard({ title, children }: { title: string; children: string }) {
+function MiniStat({ value, label }: { value: string; label: string }) {
   return (
-    <motion.div
-      whileHover={{ y: -3 }}
-      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-      className="rounded-2xl border border-black/10 bg-white/80 p-6 backdrop-blur"
-    >
-      <p className="text-sm font-semibold text-neutral-900">{title}</p>
-      <p className="mt-2 text-sm leading-6 text-neutral-700">{children}</p>
-    </motion.div>
+    <div className="rounded-2xl border border-black/10 bg-neutral-50 px-4 py-3">
+      <p className="text-xl font-semibold text-neutral-900">{value}</p>
+      <p className="mt-1 text-xs font-medium text-neutral-600">{label}</p>
+    </div>
   );
 }
 
-function CategoryCard({ title, items }: { title: string; items: string[] }) {
+function WhyCard({ title, desc }: { title: string; desc: string }) {
   return (
     <motion.div
       whileHover={{ y: -3 }}
       transition={{ type: "spring", stiffness: 500, damping: 30 }}
-      className="rounded-2xl border border-black/10 bg-white/80 p-6 backdrop-blur"
+      className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm"
     >
-      <p className="text-base font-semibold text-neutral-900">{title}</p>
-      <ul className="mt-3 space-y-2 text-sm text-neutral-700">
-        {items.map((x, idx) => (
-          <li key={idx}>• {x}</li>
-        ))}
-      </ul>
-    </motion.div>
-  );
-}
-
-function ValueCard({ title, desc }: { title: string; desc: string }) {
-  return (
-    <motion.div
-      whileHover={{ y: -3 }}
-      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-      className="rounded-2xl border border-black/10 bg-white/80 p-6 backdrop-blur"
-    >
-      <p className="text-base font-semibold text-neutral-900">{title}</p>
+      <div className="h-11 w-11 rounded-2xl bg-neutral-900/5" />
+      <p className="mt-4 text-base font-semibold text-neutral-900">{title}</p>
       <p className="mt-2 text-sm leading-6 text-neutral-700">{desc}</p>
+    </motion.div>
+  );
+}
+
+function SpecialCard({
+  title,
+  desc,
+  note,
+}: {
+  title: string;
+  desc: string;
+  note: string;
+}) {
+  return (
+    <motion.div
+      whileHover={{ y: -3 }}
+      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      className="rounded-3xl border border-black/10 bg-gradient-to-br from-neutral-900 to-neutral-800 p-7 text-white shadow-sm md:col-span-2 lg:col-span-3"
+    >
+      <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+        <div className="max-w-3xl">
+          <p className="text-lg font-semibold">{title}</p>
+          <p className="mt-2 text-sm leading-6 text-white/85">{desc}</p>
+          <p className="mt-4 text-xs text-white/70">{note}</p>
+        </div>
+
+        <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm font-semibold text-white/90 backdrop-blur">
+          Evidențiat
+        </div>
+      </div>
     </motion.div>
   );
 }

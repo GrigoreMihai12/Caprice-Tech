@@ -14,16 +14,16 @@ const section: Variants = {
 
 const services = [
   {
-    title: "Vopsele & finisaje",
-    desc: "Lavabilă, amorsă, glet, tencuieli decorative și accesorii pentru finisaje interioare.",
+    title: "Vopsele & Finisaje decorative",
+    desc: "Comercializăm vopsele lavabile, amorse, gleturi, tencuieli decorative și lacuri, alături de accesorii pentru finisaje interioare. Oferim materiale profesionale pentru proiecte rezidențiale sau comerciale.",
   },
   {
     title: "Gresie, faianță & pardoseli",
-    desc: "Plăci ceramice, adezivi, chituri, profile și accesorii pentru un montaj corect.",
+    desc: "Tot ce ai nevoie, de la baie la living. Gresie, faianță, plăci ceramice, parchet laminat, SPC / parchet SPC și plinte, pentru amenajări interioare complete.",
   },
   {
     title: "Instalații termice & electrice",
-    desc: "Materiale pentru instalații: cabluri, protecții, țevi, fitinguri, radiatoare și accesorii.",
+    desc: "Sisteme complete pentru încălzire și climatizare, pompe de căldură, centrale termice și aer condiționat (AC). Soluții pentru încălzire în pardoseală, calorifere, boilere, sisteme de încălzire și sisteme de climatizare",
   },
 ];
 
@@ -37,9 +37,7 @@ export default function HomePage() {
     <div className="relative">
       {/* fundal colorat (același vibe ca Blog/Contact) */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-24 left-[-120px] h-[420px] w-[420px] rounded-full bg-fuchsia-500/10 blur-3xl" />
-        <div className="absolute -top-32 right-[-120px] h-[460px] w-[460px] rounded-full bg-sky-500/10 blur-3xl" />
-        <div className="absolute -bottom-32 left-[10%] h-[520px] w-[520px] rounded-full bg-emerald-500/10 blur-3xl" />
+
       </div>
 
       {/* HERO cu poză */}
@@ -78,7 +76,7 @@ export default function HomePage() {
                     transition={{ duration: 0.35, ease: EASE_OUT }}
                     className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur"
                   >
-                    Materiale • Instalații • Finisaje
+                   Instalații electrice & termice | Finisaje interioare | Vopsele & Solutii decorative 
                   </motion.p>
 
                   <motion.h1
@@ -96,12 +94,7 @@ export default function HomePage() {
                     transition={{ duration: 0.45, ease: EASE_OUT, delay: 0.1 }}
                     className="mt-4 max-w-2xl text-base leading-7 text-white/85 md:text-lg"
                   >
-                    Caprice Tech oferă materiale pentru instalații electrice și
-                    termice, vopsele și finisaje interioare, gresie, faianță și
-                    pardoseli.{" "}
-                    <span className="font-medium text-white">
-                      [DE COMPLETAT: oraș/zona, livrare, stoc, branduri.]
-                    </span>
+                    De peste 30 de ani oferim soluții complete, pentru fiecare etapă a proiectului.{" "}
                   </motion.p>
 
                   <motion.div
@@ -153,13 +146,7 @@ export default function HomePage() {
           <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">
             Categorii principale
           </h2>
-          <p className="mt-2 text-neutral-700">
-            Găsești materiale și accesorii pentru proiecte rezidențiale și
-            comerciale.{" "}
-            <span className="font-medium text-neutral-900">
-              [DE COMPLETAT: ce tipuri de clienți deserviți.]
-            </span>
-          </p>
+
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -179,9 +166,6 @@ export default function HomePage() {
                 {s.title}
               </h3>
               <p className="mt-2 text-sm leading-6 text-neutral-700">{s.desc}</p>
-              <p className="mt-4 text-xs text-neutral-500">
-                [DE COMPLETAT: exemple produse / branduri pentru această categorie]
-              </p>
             </motion.div>
           ))}
         </div>
@@ -203,9 +187,7 @@ export default function HomePage() {
             <p className="mt-2 text-neutral-700">
               Lucrăm cu branduri și distribuitori recunoscuți pentru rezultate
               durabile și compatibilitate bună între produse.{" "}
-              <span className="font-medium text-neutral-900">
-                [DE COMPLETAT: încă 1–2 branduri.]
-              </span>
+
             </p>
           </div>
 
@@ -254,9 +236,7 @@ export default function HomePage() {
             <p className="mt-2 max-w-2xl text-white/80">
               Trimite-ne detaliile proiectului și îți recomandăm produse
               compatibile.{" "}
-              <span className="font-medium">
-                [DE COMPLETAT: timp răspuns, livrare, ridicare.]
-              </span>
+
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -266,12 +246,7 @@ export default function HomePage() {
               >
                 Contact
               </Link>
-              <Link
-                href="/blog"
-                className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/15"
-              >
-                Citește ghiduri
-              </Link>
+
             </div>
           </div>
         </div>

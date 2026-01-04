@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const navItems = [
   { label: "Acasa", href: "/" },
   { label: "Despre noi", href: "/despre-noi" },
-  { label: "Blog", href: "/blog" },
+  // { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
