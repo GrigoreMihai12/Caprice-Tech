@@ -193,7 +193,7 @@ export default function ContactPage() {
                 <li>📞 0744 509 028</li>
                 <li>✉️ office@caprice-tech.ro</li>
                 <li>
-                  📍 Strada Râureni nr. 56–60, Râmnicu Vâlcea 240475
+                  📍 Strada Râureni nr. 56–60, Râmnicu Vâlcea 245900
                 </li>
                 <li>🕒 L–V 8:00–17:00, S–D închis</li>
               </ul>
@@ -204,7 +204,22 @@ export default function ContactPage() {
               >
                 Sună acum
               </a>
-            </div>     
+            </div>
+
+            {/* Harta Google Maps - coordonate locație */}
+            <div className="rounded-3xl border border-black/10 overflow-hidden">
+              <iframe
+                title="Locație Caprice Tech pe Google Maps"
+                src="https://www.google.com/maps?q=45.06541315925154,24.3390311243179&z=16&output=embed"
+                width="100%"
+                height="240"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full"
+              />
+            </div>
           </motion.div>
         </motion.section>
       </div>

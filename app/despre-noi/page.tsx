@@ -92,7 +92,7 @@ export default function DespreNoiPage() {
           <div className="mt-8">
             <SpecialCard
               title="Echipă tehnică specializată"
-              desc="Echipă de 2 ingineri special pregătiți, cu atestate în domeniul instalațiilor, pentru realizarea proiectelor de instalații."
+              desc="Echipă formată din 2 ingineri autorizați ISCIR, specializați în proiectarea și operarea instalațiilor termice."
               note=""
             />
           </div>

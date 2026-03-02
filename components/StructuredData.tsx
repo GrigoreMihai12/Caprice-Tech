@@ -13,13 +13,13 @@ export default function StructuredData() {
       "@type": "PostalAddress",
       streetAddress: "Strada Râureni nr. 56–60",
       addressLocality: "Râmnicu Vâlcea",
-      postalCode: "240475",
+      postalCode: "245900",
       addressCountry: "RO",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "45.1047", // Actualizează cu coordonatele reale
-      longitude: "24.3714", // Actualizează cu coordonatele reale
+      latitude: "45.06541315925154",
+      longitude: "24.3390311243179",
     },
     openingHoursSpecification: [
       {
@@ -35,8 +35,8 @@ export default function StructuredData() {
       name: "Râmnicu Vâlcea",
     },
     sameAs: [
-      "https://facebook.com/caprice-tech", // Actualizează cu link-urile reale
-      "https://instagram.com/caprice-tech", // Actualizează cu link-urile reale
+      "https://www.facebook.com/share/16pB6Ua599/?mibextid=wwXIfr",
+      "https://www.instagram.com/capricetech.ro?igsh=MXR4Ymp4aWRrYnEwYg%3D%3D&utm_source=qr",
     ],
   };
 

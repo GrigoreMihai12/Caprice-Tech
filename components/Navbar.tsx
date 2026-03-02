@@ -61,7 +61,7 @@ export default function Navbar() {
           className="hidden items-center gap-3 sm:flex"
         >
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/share/16pB6Ua599/?mibextid=wwXIfr"
             target="_blank"
             rel="noopener noreferrer"
             className="text-neutral-700 transition-colors hover:text-neutral-900"
@@ -70,7 +70,7 @@ export default function Navbar() {
             <FacebookIcon className="h-5 w-5" />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/capricetech.ro?igsh=MXR4Ymp4aWRrYnEwYg%3D%3D&utm_source=qr"
             target="_blank"
             rel="noopener noreferrer"
             className="text-neutral-700 transition-colors hover:text-neutral-900"
@@ -195,7 +195,7 @@ export default function Navbar() {
               {/* Social media în meniu mobile */}
               <div className="mt-4 flex items-center gap-4 border-t border-neutral-200 pt-4">
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/share/16pB6Ua599/?mibextid=wwXIfr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-700 transition-colors hover:text-neutral-900"
@@ -204,7 +204,7 @@ export default function Navbar() {
                   <FacebookIcon className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/capricetech.ro?igsh=MXR4Ymp4aWRrYnEwYg%3D%3D&utm_source=qr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-700 transition-colors hover:text-neutral-900"
