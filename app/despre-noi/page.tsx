@@ -120,6 +120,27 @@ export default function DespreNoiPage() {
             />
           </div>
         </motion.section>
+
+        {/* Informații juridice – discret la subsol */}
+        <motion.section
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 pt-8"
+        >
+          <div className="rounded-2xl border border-neutral-200/80 bg-neutral-50/60 px-6 py-5 backdrop-blur-sm shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+            <p className="text-[10px] uppercase tracking-widest text-neutral-400 mb-3 font-medium">
+              Informații juridice
+            </p>
+            <div className="text-[11px] leading-relaxed text-neutral-500 space-y-1.5 max-w-2xl">
+              <p>CAPRICE TECH SRL, persoană juridică română, sediu Râmnicu Vâlcea, str. Raureni nr. 56–60.</p>
+              <p>Înregistrată la ORC nr. J20/2503636/2003, CUI 51833072.</p>
+              <p>Cont bancar RO80BTRLRONCRT0CY4682601, Banca Transilvania, Sucursala Vâlcea.</p>
+              <p>Reprezentată prin administrator LINTE CONSTANTIN.</p>
+            </div>
+          </div>
+        </motion.section>
       </div>
     </div>
   );
