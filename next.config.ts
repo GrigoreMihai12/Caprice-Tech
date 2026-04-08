@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export", // necesar pentru deploy pe cPanel (site static)
+  images: { unoptimized: true }, // necesar pentru export static (fără Image Optimization API)
   /* config options here */
   async headers() {
     return [
