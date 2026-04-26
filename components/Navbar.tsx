@@ -3,10 +3,18 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
-const navItems = [
+type NavItem = {
+  label: string;
+  href: string;
+  variant?: "link" | "pill";
+};
+
+const navItems: NavItem[] = [
   { label: "Acasă", href: "/" },
+  { label: "Design", href: "/design", variant: "pill" },
   { label: "Despre noi", href: "/despre-noi" },
   // { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -44,6 +52,61 @@ function InstagramIcon({ className }: { className?: string }) {
         clipRule="evenodd"
       />
     </svg>
+  );
+}
+
+function NavLink({
+  item,
+  idx,
+  onNavigate,
+}: {
+  item: NavItem;
+  idx: number;
+  onNavigate?: () => void;
+}) {
+  const pathname = usePathname();
+  const active = pathname === item.href;
+  const isPill = item.variant === "pill";
+
+  const pillClass =
+    "rounded-md bg-neutral-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900";
+  const pillActiveClass = active ? " ring-2 ring-neutral-900 ring-offset-2 ring-offset-white" : "";
+
+  const linkClass = isPill
+    ? `${pillClass}${pillActiveClass}`
+    : "group relative inline-block text-sm font-medium text-neutral-700 transition-colors hover:text-neutral-900";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.25, ease: "easeOut", delay: 0.1 + 0.05 * idx }}
+    >
+      <Link
+        href={item.href}
+        onClick={onNavigate}
+        className={linkClass}
+      >
+        {isPill ? (
+          item.label
+        ) : (
+          <>
+            <motion.span
+              className="inline-block"
+              whileHover={{ y: -1 }}
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            >
+              {item.label}
+            </motion.span>
+            <span
+              className={`pointer-events-none absolute -bottom-1 left-0 h-[2px] w-full origin-left rounded-full bg-neutral-900 transition-transform duration-200 ${
+                active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+              }`}
+            />
+          </>
+        )}
+      </Link>
+    </motion.div>
   );
 }
 
@@ -110,26 +173,7 @@ export default function Navbar() {
         {/* Meniu desktop */}
         <nav className="hidden items-center gap-6 md:flex md:gap-8">
           {navItems.map((item, idx) => (
-            <motion.div
-              key={item.href}
-              initial={{ opacity: 0, y: -6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut", delay: 0.1 + 0.05 * idx }}
-            >
-              <Link
-                href={item.href}
-                className="group relative text-sm font-medium text-neutral-700 transition-colors hover:text-neutral-900"
-              >
-                <motion.span
-                  className="inline-block"
-                  whileHover={{ y: -1 }}
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                >
-                  {item.label}
-                </motion.span>
-                <span className="pointer-events-none absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 rounded-full bg-neutral-900 transition-transform duration-200 group-hover:scale-x-100" />
-              </Link>
-            </motion.div>
+            <NavLink key={item.href} item={item} idx={idx} />
           ))}
         </nav>
 
@@ -176,22 +220,29 @@ export default function Navbar() {
             className="overflow-hidden border-t border-neutral-200 bg-white md:hidden"
           >
             <nav className="flex flex-col px-4 py-4">
-              {navItems.map((item, idx) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block rounded-lg px-4 py-3 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
+              {navItems.map((item, idx) => {
+                const isPill = item.variant === "pill";
+                return (
+                  <motion.div
+                    key={item.href}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.05 }}
                   >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={
+                        isPill
+                          ? "mx-4 mb-2 mt-1 flex items-center justify-center rounded-md bg-neutral-900 px-4 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-neutral-800"
+                          : "block rounded-lg px-4 py-3 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
+                      }
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
               {/* Social media în meniu mobile */}
               <div className="mt-4 flex items-center gap-4 border-t border-neutral-200 pt-4">
                 <a

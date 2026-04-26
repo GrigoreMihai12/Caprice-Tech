@@ -135,9 +135,6 @@ export default function DespreNoiPage() {
             </p>
             <div className="text-[11px] leading-relaxed text-neutral-500 space-y-1.5 max-w-2xl">
               <p>CAPRICE TECH SRL, persoană juridică română, sediu Râmnicu Vâlcea, str. Raureni nr. 56–60.</p>
-              <p>Înregistrată la ORC nr. J20/2503636/2003, CUI 51833072.</p>
-              <p>Cont bancar RO80BTRLRONCRT0CY4682601, Banca Transilvania, Sucursala Vâlcea.</p>
-              <p>Reprezentată prin administrator LINTE CONSTANTIN.</p>
             </div>
           </div>
         </motion.section>
