@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.06.jpeg",
+        url: "/design-projects/design-portfolio-01.jpeg",
         width: 1200,
         height: 630,
         alt: "Pagina Design - Caprice Tech",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Design | Caprice Tech",
     description:
       "Resurse pentru designeri și arhitecți: colecții, branduri și proiecte reale.",
-    images: ["/design-projects/WhatsApp Image 2026-04-25 at 00.25.06.jpeg"],
+    images: ["/design-projects/design-portfolio-01.jpeg"],
   },
 };
 

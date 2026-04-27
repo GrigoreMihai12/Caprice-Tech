@@ -4,59 +4,11 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { REVISTA_MARIEI_URL } from "@/lib/revista-mariei";
+import { DESIGN_HERO_SLIDES } from "@/lib/design-hero-slides";
 
 const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-const SLIDES: { src: string; alt: string; objectPosition?: string }[] = [
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.06.jpeg",
-    alt: "Proiect Maria 1",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.06 (1).jpeg",
-    alt: "Proiect Maria 2",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.06 (2).jpeg",
-    alt: "Proiect Maria 3",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.07.jpeg",
-    alt: "Proiect Maria 4",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.07 (1).jpeg",
-    alt: "Proiect Maria 5",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.07 (2).jpeg",
-    alt: "Proiect Maria 6",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.07 (3).jpeg",
-    alt: "Proiect Maria 7",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.07 (4).jpeg",
-    alt: "Proiect Maria 8",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.07 (5).jpeg",
-    alt: "Proiect Maria 9",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.07 (6).jpeg",
-    alt: "Proiect Maria 10",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.07 (7).jpeg",
-    alt: "Proiect Maria 11",
-  },
-  {
-    src: "/design-projects/WhatsApp Image 2026-04-25 at 00.25.08.jpeg",
-    alt: "Proiect Maria 12",
-  },
-];
+const SLIDES = DESIGN_HERO_SLIDES;
 
 const INTERVAL_MS = 5000;
 
