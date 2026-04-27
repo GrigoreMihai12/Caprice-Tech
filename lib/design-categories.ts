@@ -24,7 +24,7 @@ export const designCategories: DesignCategory[] = [
   {
     id: "parchet",
     title: "Parchet",
-    imageSrc: "/design-projects2/WhatsApp Image 2026-04-12 at 21.04.25.jpeg",
+    imageSrc: "/design-projects2/parchet.jpeg",
     imageAlt: "Parchet și pardoseli — proiect",
     description:
       "Texturi, finisaje și colecții pentru randări și execuție.",
@@ -38,7 +38,7 @@ export const designCategories: DesignCategory[] = [
   {
     id: "gresie-faianta",
     title: "Gresie & faianță",
-    imageSrc: "/design-projects2/WhatsApp Image 2026-04-12 at 21.04.25 (1).jpeg",
+    imageSrc: "/design-projects2/gresie-si-faianta.jpeg",
     imageAlt: "Gresie și faianță în proiect",
     description:
       "Colecții pentru baie, bucătărie și spații comerciale.",
@@ -54,7 +54,7 @@ export const designCategories: DesignCategory[] = [
   {
     id: "decoratiuni",
     title: "Decorațiuni",
-    imageSrc: "/design-projects2/WhatsApp Image 2026-04-12 at 21.04.25 (2).jpeg",
+    imageSrc: "/design-projects2/decoratiuni.jpeg",
     imageAlt: "Decorațiuni și accente în spațiu",
     description: "Accente care definesc spațiul.",
     links: [
@@ -65,7 +65,7 @@ export const designCategories: DesignCategory[] = [
   {
     id: "lumini",
     title: "Lumini",
-    imageSrc: "/design-projects2/WhatsApp Image 2026-04-12 at 21.04.26.jpeg",
+    imageSrc: "/design-projects2/iluminat.jpeg",
     imageAlt: "Soluții de iluminat și climatizare",
     description: "Iluminat funcțional și ambiental.",
     links: [
@@ -79,7 +79,7 @@ export const designCategories: DesignCategory[] = [
   {
     id: "baie",
     title: "Baie",
-    imageSrc: "/design-projects2/WhatsApp Image 2026-04-12 at 21.04.26 (1).jpeg",
+    imageSrc: "/design-projects2/baie.jpeg",
     imageAlt: "Amenajare baie și spații sanitare",
     description: "Soluții complete pentru spații sanitare.",
     links: [
@@ -91,7 +91,7 @@ export const designCategories: DesignCategory[] = [
   {
     id: "tehnici-decorative",
     title: "Tehnici decorative",
-    imageSrc: "/design-projects2/WhatsApp Image 2026-04-12 at 21.04.26 (3).jpeg",
+    imageSrc: "/design-projects2/decoratiuni.jpeg",
     imageAlt: "Tehnici decorative și vopsele",
     description:
       "Texturi și efecte decorative pentru randări și execuții.",

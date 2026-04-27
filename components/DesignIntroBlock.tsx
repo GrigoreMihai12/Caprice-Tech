@@ -42,8 +42,8 @@ export default function DesignIntroBlock() {
           <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-neutral-100 shadow-sm md:rounded-3xl">
             <div className="relative aspect-[4/3] w-full md:aspect-[5/4]">
               <Image
-                src="/design-projects2/WhatsApp Image 2026-04-12 at 21.04.26 (7).jpeg"
-                alt="Referință proiect de design interior"
+                src="/design-projects2/design-executie.jpeg"
+                alt="Design și execuție — referință proiect"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
