@@ -1,25 +1,30 @@
 const STORAGE_KEY = "caprice-design-unlocked";
 
-export function getUnlockedCategoryIds(): string[] {
-  if (typeof window === "undefined") return [];
+export const DESIGN_RESOURCES_UNLOCKED_EVENT = "design-resources-unlocked";
+
+function readStoredValue(): string | null {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem(STORAGE_KEY);
+}
+
+/** Compatibil cu versiunea veche (listă de id-uri per categorie). */
+function wasLegacyUnlocked(raw: string): boolean {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
-    return Array.isArray(parsed)
-      ? parsed.filter((id): id is string => typeof id === "string")
-      : [];
+    return Array.isArray(parsed) && parsed.length > 0;
   } catch {
-    return [];
+    return false;
   }
 }
 
-export function markCategoryUnlocked(categoryId: string): void {
-  const ids = getUnlockedCategoryIds();
-  if (ids.includes(categoryId)) return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify([...ids, categoryId]));
+export function areDesignResourcesUnlocked(): boolean {
+  const raw = readStoredValue();
+  if (!raw) return false;
+  if (raw === "true") return true;
+  return wasLegacyUnlocked(raw);
 }
 
-export function isCategoryUnlocked(categoryId: string): boolean {
-  return getUnlockedCategoryIds().includes(categoryId);
+export function markAllDesignResourcesUnlocked(): void {
+  localStorage.setItem(STORAGE_KEY, "true");
+  window.dispatchEvent(new CustomEvent(DESIGN_RESOURCES_UNLOCKED_EVENT));
 }

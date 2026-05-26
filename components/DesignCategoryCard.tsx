@@ -4,10 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { DesignCategory } from "@/lib/design-categories";
-import {
-  isCategoryUnlocked,
-  markCategoryUnlocked,
-} from "@/lib/design-unlock-storage";
+import { markAllDesignResourcesUnlocked } from "@/lib/design-unlock-storage";
+import { useDesignResourcesUnlocked } from "@/lib/use-design-resources-unlocked";
 
 function LockIcon({ className }: { className?: string }) {
   return (
@@ -38,17 +36,11 @@ export default function DesignCategoryCard({
   const dialogTitleId = useId();
   const passwordInputRef = useRef<HTMLInputElement>(null);
 
-  const [isLocked, setIsLocked] = useState(true);
-  const [hydrated, setHydrated] = useState(false);
+  const isUnlocked = useDesignResourcesUnlocked();
   const [modalOpen, setModalOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    setIsLocked(!isCategoryUnlocked(category.id));
-    setHydrated(true);
-  }, [category.id]);
 
   const closeModal = useCallback(() => {
     setModalOpen(false);
@@ -97,8 +89,7 @@ export default function DesignCategoryCard({
         return;
       }
 
-      markCategoryUnlocked(category.id);
-      setIsLocked(false);
+      markAllDesignResourcesUnlocked();
       closeModal();
     } catch {
       setError("Nu s-a putut verifica parola. Încercați din nou.");
@@ -107,13 +98,13 @@ export default function DesignCategoryCard({
     }
   };
 
-  const showLockOverlay = hydrated && isLocked;
+  const showLockOverlay = !isUnlocked;
 
   return (
     <>
       <article className="relative flex flex-col overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition-shadow hover:shadow-md">
         <div
-          className={`flex flex-1 flex-col transition-[filter] duration-300 ${
+          className={`flex flex-1 flex-col ${
             showLockOverlay ? "pointer-events-none select-none blur-md" : ""
           }`}
           aria-hidden={showLockOverlay ? true : undefined}
@@ -181,7 +172,7 @@ export default function DesignCategoryCard({
               type="button"
               onClick={openModal}
               className="flex h-16 w-16 items-center justify-center rounded-full border border-neutral-200/80 bg-white text-neutral-800 shadow-lg transition hover:scale-105 hover:border-neutral-300 hover:bg-neutral-50 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
-              aria-label={`Deblochează resursele pentru ${category.title}`}
+              aria-label="Deblochează toate resursele pentru designeri"
             >
               <LockIcon className="h-7 w-7" />
             </button>
@@ -216,9 +207,9 @@ export default function DesignCategoryCard({
             <p className="mt-2 text-sm text-neutral-600">
               Introduceți parola pentru a debloca{" "}
               <span className="font-medium text-neutral-800">
-                {category.title}
-              </span>
-              .
+                toate categoriile
+              </span>{" "}
+              din această secțiune.
             </p>
 
             <form onSubmit={handleUnlock} className="mt-5 space-y-4">
