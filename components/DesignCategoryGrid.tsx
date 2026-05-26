@@ -8,6 +8,7 @@ import {
 } from "@/lib/design-categories";
 import DesignCategoryCard from "@/components/DesignCategoryCard";
 import { markAllDesignResourcesUnlocked } from "@/lib/design-unlock-storage";
+import { verifyDesignPassword } from "@/lib/design-unlock-verify";
 import { useDesignResourcesUnlocked } from "@/lib/use-design-resources-unlocked";
 
 function LockIcon({ className }: { className?: string }) {
@@ -74,18 +75,11 @@ export default function DesignCategoryGrid() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/design-unlock", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
-      });
-      const data = (await res.json()) as { error?: string };
-
-      if (!res.ok) {
-        setError(data.error ?? "Parolă incorectă.");
+      const result = await verifyDesignPassword(password);
+      if (!result.ok) {
+        setError(result.error);
         return;
       }
-
       markAllDesignResourcesUnlocked();
       closeModal();
     } catch {

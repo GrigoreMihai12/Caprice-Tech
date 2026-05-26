@@ -15,6 +15,8 @@ npm run build
 
 După build, Next.js creează folderul **`out/`** cu tot site-ul (HTML, CSS, JS, imagini). Acest folder este ce trebuie urcat pe server.
 
+Parola secțiunii Design (`DESIGN_RESOURCES_PASSWORD` din `.env`) este inclusă la build ca **hash SHA-256** în JavaScript (nu în clar), astfel deblocarea funcționează și pe hosting static, fără API Node.
+
 ---
 
 ## Pasul 2: Conținutul de urcat

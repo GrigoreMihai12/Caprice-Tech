@@ -1,8 +1,18 @@
+import { createHash } from "node:crypto";
 import type { NextConfig } from "next";
+
+const designPassword = process.env.DESIGN_RESOURCES_PASSWORD ?? "";
+const designPasswordHash = designPassword
+  ? createHash("sha256").update(designPassword, "utf8").digest("hex")
+  : "";
 
 const nextConfig: NextConfig = {
   output: "export", // necesar pentru deploy pe cPanel (site static)
   images: { unoptimized: true }, // necesar pentru export static (fără Image Optimization API)
+  env: {
+    // Hash la build din DESIGN_RESOURCES_PASSWORD — parola nu apare în clar în JS
+    NEXT_PUBLIC_DESIGN_RESOURCES_PASSWORD_HASH: designPasswordHash,
+  },
   /* config options here */
   async headers() {
     return [
