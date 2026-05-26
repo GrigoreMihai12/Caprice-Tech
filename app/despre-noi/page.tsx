@@ -129,12 +129,35 @@ export default function DespreNoiPage() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="mt-16 pt-8"
         >
-          <div className="rounded-2xl border border-neutral-200/80 bg-neutral-50/60 px-6 py-5 backdrop-blur-sm shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-            <p className="text-[10px] uppercase tracking-widest text-neutral-400 mb-3 font-medium">
+          <div className="rounded-2xl border border-neutral-200/80 bg-neutral-50/60 px-6 py-6 backdrop-blur-sm shadow-[0_1px_2px_rgba(0,0,0,0.04)] md:px-8 md:py-8">
+            <p className="text-[10px] font-medium uppercase tracking-widest text-neutral-400">
               Informații juridice
             </p>
-            <div className="text-[11px] leading-relaxed text-neutral-500 space-y-1.5 max-w-2xl">
-              <p>CAPRICE TECH SRL, persoană juridică română, sediu Râmnicu Vâlcea, str. Raureni nr. 56–60.</p>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-neutral-600">
+              CAPRICE TECH SRL, persoană juridică română, sediu Râmnicu Vâlcea,
+              str. Raureni nr. 56–60.
+            </p>
+
+            <div className="mt-8 border-t border-neutral-200/90 pt-8">
+              <p className="text-center text-xs font-medium text-neutral-500">
+                Protecția consumatorului
+              </p>
+              <div className="mx-auto mt-6 flex max-w-3xl flex-col items-stretch justify-center gap-5 sm:flex-row sm:items-center sm:justify-center sm:gap-8">
+                <AnpcBadgeLink
+                  href="https://anpc.ro/ce-este-sal/"
+                  src="/ANPC-1.jpeg"
+                  alt="ANPC — Soluționarea alternativă a litigiilor (SAL)"
+                  width={320}
+                  height={80}
+                />
+                <AnpcBadgeLink
+                  href="https://ec.europa.eu/consumers/odr"
+                  src="/ANPC.jpeg"
+                  alt="Soluționarea online a litigiilor (SOL)"
+                  width={280}
+                  height={72}
+                />
+              </div>
             </div>
           </div>
         </motion.section>
@@ -144,6 +167,38 @@ export default function DespreNoiPage() {
 }
 
 /* ================== COMPONENTE ================== */
+
+function AnpcBadgeLink({
+  href,
+  src,
+  alt,
+  width,
+  height,
+}: {
+  href: string;
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group mx-auto block w-full max-w-[320px] rounded-lg bg-white p-2 transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 sm:mx-0 sm:w-auto sm:max-w-none"
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className="h-auto w-full object-contain"
+        style={{ width: "100%", height: "auto", maxWidth: width }}
+      />
+    </a>
+  );
+}
 
 function MiniStat({ value, label }: { value: string; label: string }) {
   return (
