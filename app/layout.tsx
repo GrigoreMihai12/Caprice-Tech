@@ -90,11 +90,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ro" className={playfairDisplay.variable}>
-      <body className="min-h-screen bg-white text-neutral-900">
+    <html lang="ro" className={`${playfairDisplay.variable} h-full`} style={{ colorScheme: "light" }}>
+      <body className="flex min-h-screen flex-col bg-white text-neutral-900 antialiased">
         <StructuredData />
         <Navbar />
-        <main>{children}</main>
+        <main className="flex-1 bg-white text-neutral-900">{children}</main>
         <Footer />
       </body>
     </html>
